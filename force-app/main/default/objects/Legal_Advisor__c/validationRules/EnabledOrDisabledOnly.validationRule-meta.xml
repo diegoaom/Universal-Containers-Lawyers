@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnabledOrDisabledOnly</fullName>
+    <active>true</active>
+    <description>Only &apos;Enabled&apos; or &apos;Disabled&apos; status allowed.</description>
+    <errorConditionFormula>OR( Account_Status__c  = &apos;Enabled&apos;, Account_Status__c  = &apos;Disabled&apos;)</errorConditionFormula>
+    <errorDisplayField>Account_Status__c</errorDisplayField>
+    <errorMessage>Account Status can only be &apos;Enabled&apos; or &apos;Disabled&apos;.</errorMessage>
+</ValidationRule>
