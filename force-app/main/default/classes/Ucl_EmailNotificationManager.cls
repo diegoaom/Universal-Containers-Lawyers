@@ -1,4 +1,4 @@
-public with sharing class Ucl_ErrorHandlingUtils {
+public with sharing class Ucl_EmailNotificationManager {
   public static void sendErrorEmail(String subject, String body) {
     Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
     String[] toAddresses = new List<String>{ 'diegoolivierivii@gmail.com' };
