@@ -43,15 +43,7 @@
                 "Email": "bmoseby4@blogtalkradio.com",
                 "Phone": "937-383-6950",
                 "Address": "848 Magdeline Terrace",
-                "ClientNumber": "055db4ba-992c-46bf-80fc-5c9f1cd35287"
-            },
-            {
-                "FirstName": "Ami",
-                "LastName": "Kneafsey",
-                "Email": "akneafsey5@tripadvisor.com",
-                "Phone": "479-131-3563",
-                "Address": "376 Vermont Parkway",
-                "ClientNumber": "055db4ba-992c-46bf-80fc-5c9f1cd35287"
+                "ClientNumber": "70f194d5-5106-4302-a65a-75cccc1c3328"
             }
         ]
     },
