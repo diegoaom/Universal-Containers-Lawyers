@@ -4,6 +4,12 @@ global with sharing class Ucl_ScheduledDataProcessor implements Schedulable {
         dataProcessingService();
     }
 
+    @AuraEnabled
+    public static void executeScheduledDataProcessor() {
+        Ucl_ScheduledDataProcessor invocation = new Ucl_ScheduledDataProcessor();
+        invocation.dataProcessingService();
+    }
+
     public void dataProcessingService() {
         Map<String, Ucl_LegalAdvisor> legalAdvisorMap = Ucl_RestCallout.getData();
 
