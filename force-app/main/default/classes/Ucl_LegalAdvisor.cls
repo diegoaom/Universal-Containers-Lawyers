@@ -6,29 +6,22 @@ public with sharing class Ucl_LegalAdvisor {
   public List<Ucl_Client> clients;
 
   public Ucl_LegalAdvisor(Map<String, Object> advisorData) {
-    String key = (String) advisorData.get('AccountNumber');
+      String key = (String) advisorData.get('AccountNumber');
 
-    List<Object> clientsData = (List<Object>) advisorData.get('Clients');
-    List<Ucl_Client> clients = new List<Ucl_Client>();
-    for (Object clientData : clientsData) {
-      clients.add(new Ucl_Client((Map<String, Object>) clientData));
-    }
+      List<Object> clientsData = (List<Object>) advisorData.get('Clients');
+      clients = new List<Ucl_Client>(); 
 
-    this.accountNumber = (String) advisorData.get('AccountNumber');
-    this.accountName = (String) advisorData.get('AccountName');
-    this.accountStatus = (String) advisorData.get('AccountStatus');
-    String asOfDateString = (String) advisorData.get('AsOfDate');
+      for (Object clientData : clientsData) {
+          clients.add(new Ucl_Client((Map<String, Object>) clientData));
+      }
 
-    List<String> dateParts = asOfDateString.split('/');
-    String formattedDate =
-      dateParts[2] +
-      '-' +
-      dateParts[0] +
-      '-' +
-      dateParts[1];
-    this.asOfDate = Date.valueOf(formattedDate);
+      accountNumber = (String) advisorData.get('AccountNumber');
+      accountName = (String) advisorData.get('AccountName');
+      accountStatus = (String) advisorData.get('AccountStatus');
+      String asOfDateString = (String) advisorData.get('AsOfDate');
 
-    this.clients = clients;
-
+      List<String> dateParts = asOfDateString.split('/');
+      String formattedDate = dateParts[2] + '-' + dateParts[0] + '-' + dateParts[1];
+      asOfDate = Date.valueOf(formattedDate);
   }
 }
