@@ -8,11 +8,11 @@ public with sharing class Ucl_Client {
 
     public Ucl_Client(Map<String, Object> data) {
 
-        this.firstName = (String) data.get('FirstName');
-        this.lastName = (String) data.get('LastName');
-        this.email = (String) data.get('Email');
-        this.phone = (String) data.get('Phone');
-        this.address = (String) data.get('Address');
-        this.clientNumber = (String) data.get('ClientNumber');
+        firstName = (String) data.get('FirstName');
+        lastName = (String) data.get('LastName');
+        email = (String) data.get('Email');
+        phone = (String) data.get('Phone');
+        address = (String) data.get('Address');
+        clientNumber = (String) data.get('ClientNumber');
     }
 }
