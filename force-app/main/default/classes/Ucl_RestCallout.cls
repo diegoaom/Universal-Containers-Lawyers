@@ -1,5 +1,6 @@
 public with sharing class Ucl_RestCallout {
-  public Map<String, Ucl_LegalAdvisor> getData() {
+  @AuraEnabled
+  public static Map<String, Ucl_LegalAdvisor> getData() {
     Map<String, Ucl_LegalAdvisor> legalAdvisorMap = new Map<String, Ucl_LegalAdvisor>();
 
     Http http = new Http();
@@ -23,21 +24,22 @@ public with sharing class Ucl_RestCallout {
 
           legalAdvisorMap.put(advisor.accountNumber, advisor);
         }
-        System.debug(legalAdvisorMap);
         return legalAdvisorMap;
       } else {
-        System.debug(
-          'Error: ' + response.getStatusCode() + ' - ' + response.getStatus()
-        );
-        System.debug('Response: ' + response.getBody());
-        Ucl_ErrorHandlingUtils.sendErrorEmail(
+        Ucl_ErrorLogManager errorLogManager = new Ucl_ErrorLogManager();
+        errorLogManager.logError('Error', 'Error: ' + response.getStatusCode() + ' - ' + response.getStatus(), 'Ucl_RestCallout > getData()');
+
+        Ucl_EmailNotificationManager.sendErrorEmail(
           'Error: ' + response.getStatusCode() + ' - ' + response.getStatus(),
           'Response: ' + response.getBody()
         );
+
       }
     } catch (Exception e) {
-      System.debug('Exception: ' + e.getMessage());
-      Ucl_ErrorHandlingUtils.sendErrorEmail(
+      Ucl_ErrorLogManager errorLogManager = new Ucl_ErrorLogManager();
+      errorLogManager.logError('Exception', 'Exception: ' + e.getMessage(), 'Ucl_RestCallout > getData()');
+
+      Ucl_EmailNotificationManager.sendErrorEmail(
         'Exception',
         'Exception: ' + e.getMessage()
       );
