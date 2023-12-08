@@ -1,13 +1,19 @@
 global with sharing class Ucl_ScheduledDataProcessor implements Schedulable {
 
     global void execute(SchedulableContext ctx) {
-        dataProcessingService();
+        schedulableDataProcessor();
     }
 
     @AuraEnabled
     public static void executeScheduledDataProcessor() {
         Ucl_ScheduledDataProcessor invocation = new Ucl_ScheduledDataProcessor();
         invocation.dataProcessingService();
+    }
+
+    @future(callout=true)
+    public static void schedulableDataProcessor() {
+        Ucl_ScheduledDataProcessor scheduled = new Ucl_ScheduledDataProcessor();
+        scheduled.dataProcessingService();
     }
 
     public void dataProcessingService() {
