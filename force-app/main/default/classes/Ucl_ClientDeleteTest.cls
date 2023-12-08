@@ -29,7 +29,7 @@ private class Ucl_ClientDeleteTest {
         Ucl_ClientDelete deleteManager = new Ucl_ClientDelete();
         deleteManager.clientDelete(legalAdvisorMapWithoutAmi);
 
-        List<Client__c> amiClient = [SELECT Id FROM Client__c WHERE AccountNumberPlusClientNumber__c = 'a209ebbb-39c6-4852-8732-82237c0674fb055db4ba-992c-46bf-80fc-5c9f1cd35287'];
+        List<Client__c> amiClient = [SELECT Id FROM Client__c WHERE Client_Key__c = 'a209ebbb-39c6-4852-8732-82237c0674fb055db4ba-992c-46bf-80fc-5c9f1cd35287'];
         System.assertEquals(0, amiClient.size(), 'Client should have been deleted');
     }
 

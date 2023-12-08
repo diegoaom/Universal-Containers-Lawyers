@@ -10,7 +10,7 @@ public with sharing class Ucl_ClientDelete {
       }
     }
 
-    List<Client__c> clientsToDelete = [SELECT Id FROM Client__c WHERE AccountNumberPlusClientNumber__c NOT IN :incomingClients
+    List<Client__c> clientsToDelete = [SELECT Id FROM Client__c WHERE Client_Key__c NOT IN :incomingClients
      AND Created_by_Admin__c = false];
 
     if (!clientsToDelete.isEmpty()) {
