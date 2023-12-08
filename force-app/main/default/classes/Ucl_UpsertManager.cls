@@ -56,7 +56,8 @@ public with sharing class Ucl_UpsertManager {
               Phone__c = client.phone,
               Address__c = client.address,
               Client_Number__c = client.clientNumber,
-              Name = client.firstName + ' ' + client.lastName
+              Name = client.firstName + ' ' + client.lastName,
+              Client_Key__c = legalAdvisorExternalId + client.clientNumber
           );
 
           clientsToUpsert.add(clientRecord);
@@ -64,7 +65,7 @@ public with sharing class Ucl_UpsertManager {
   }
 
     try {
-      upsert clientsToUpsert Client_Number__c;
+      upsert clientsToUpsert Client_Key__c;
     } catch (DmlException e) {
       
       Ucl_ErrorLogManager errorLogManager = new Ucl_ErrorLogManager();
@@ -78,4 +79,3 @@ public with sharing class Ucl_UpsertManager {
     }
   }
 }
-
