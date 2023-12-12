@@ -57,7 +57,7 @@ public with sharing class Ucl_UpsertManager {
               Address__c = client.address,
               Client_Number__c = client.clientNumber,
               Name = client.firstName + ' ' + client.lastName,
-              Client_Key__c = legalAdvisorExternalId + client.clientNumber
+              Client_Key__c = legalAdvisorExternalId.substring(0, 36) + client.clientNumber.substring(0, 36)
           );
 
           clientsToUpsert.add(clientRecord);
